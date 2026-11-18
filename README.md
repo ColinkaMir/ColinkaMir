@@ -15,7 +15,7 @@ Everything below is live at [prooflines.org/monad](https://prooflines.org/monad/
 
 | Tool | What it does |
 |---|---|
-| [monad-sonar](https://github.com/ColinkaMir/monad-sonar) | Reads Monad's live peer and validator set without running a node, speaking the discovery protocol directly. Self-host CLI plus [hosted public feeds](https://prooflines.org/monad/sonar/) for testnet and mainnet, refreshed every 30 minutes |
+| [monad-sonar](https://github.com/ColinkaMir/monad-sonar) | Reads Monad's live peer and validator set without running a node, speaking the discovery protocol directly. Self-host CLI plus [hosted public feeds](https://prooflines.org/monad/sonar/) for testnet and mainnet, refreshed hourly, and a [daily network report](https://github.com/ColinkaMir/monad-sonar/blob/main/NETWORK.md) |
 | [Geo-Latency Map](https://prooflines.org/monad/geo-latency/) | Stake-weighted validator geography and ICMP latency for both Monad networks ([pipeline source](https://github.com/ColinkaMir/monad-stake-geography)) |
 | [VDP Tracker](https://prooflines.org/monad/vdp-tracker/) | On-chain scanner, API and dashboard for Monad's Validator Delegation Program ([source](https://github.com/ColinkaMir/monad-vdp-tracker)) |
 | [Observed Infra Feed](https://prooflines.org/monad/observed/) | Declared-versus-observed cross-check of validator metadata, the consumer side of MRC-13 |
@@ -24,6 +24,7 @@ Everything below is live at [prooflines.org/monad](https://prooflines.org/monad/
 
 | Tool | What it does |
 |---|---|
+| [Monad events calendar](https://prooflines.org/monad/events/) | One subscribable feed for Google, Apple or Outlook: testnet load tests, releases and the GPG-verified Foundation announcements, built on the gmonads events calendar ([source](https://github.com/ColinkaMir/monad-events-ics)) |
 | [MonadBeaconBot](https://t.me/MonadBeaconBot) | Multi-user Telegram bot: node and RPC health, block stalls, lag behind the network, validator liveness, VDP alerts ([source](https://github.com/ColinkaMir/monad-node-bot)) |
 | [MOST Leaderboard](https://prooflines.org/monad/most/) | Live standings of the Monad Open Source Track pilot, recomputed every 5 minutes |
 | [most-pool-watch](https://github.com/ColinkaMir/most-pool-watch) | Telegram watcher for the MOST pool: loud alerts for your events, claim registry, conflict watch, contribution-days leaderboard |
@@ -34,7 +35,7 @@ Everything below is live at [prooflines.org/monad](https://prooflines.org/monad/
 |---|---|
 | [Receipts](https://prooflines.org/monad/agent-trust/) | Provenance for ERC-8004 reputation: which ratings on an agent are backed by independent payers and which were produced by its own owner. HTTP API and MCP server, already called by another team's app ([source](https://github.com/ColinkaMir/monad-agent-trust)) |
 | [monad-mcp](https://github.com/ColinkaMir/monad-mcp) | Monad network intelligence as MCP tools at `https://prooflines.org/mcp`: network snapshot, validator set, geo concentration, VDP status, one paid report |
-| [x402 Gate](https://github.com/ColinkaMir/monad-x402-gate) | Pay-per-call network data over HTTP 402: dual-rail on Monad mainnet (native MON self-verified, plus the official USDC scheme via facilitator), [live endpoint](https://prooflines.org/monad/x402-on-monad/) with real on-chain revenue |
+| [x402 Gate](https://github.com/ColinkaMir/monad-x402-gate) | Pay-per-call network data over HTTP 402: dual-rail on Monad mainnet and testnet (native MON self-verified, plus the official USDC `exact` scheme via facilitator), [live endpoint](https://prooflines.org/monad/x402-on-monad/) with real on-chain revenue. Declared in [`/mdf.json`](https://prooflines.org/mdf.json) and, per the spec's authors, the first third-party site to pass the [MDF 0.3.x validator](https://github.com/AnswerDotAI/llms-txt/issues/126) |
 | [monad-x402-index](https://github.com/ColinkaMir/monad-x402-index) | The [discovery index](https://prooflines.org/monad/x402-discovery/resources) for x402 on Monad, in the CDP bazaar shape, rebuilt hourly |
 | [monad-x402-map](https://github.com/ColinkaMir/monad-x402-map) | Verified map of the Monad x402 niche: every entry probed, checked on-chain, or actually paid, with the tx hashes to prove it |
 
@@ -51,6 +52,7 @@ through the MOST pool:
   chain-id check before publishing MIP-8 results, an Aave v3 repay action
 - **sentinel** (2): ERC-8004 reputation provenance from Receipts shown before an agent is registered
 - **MRC-13** (Validator Metadata Registry): the ObservedSource layer in the reference implementation
+- **Test case for MDF 0.3.1** (Markdown First, agent-readable pricing): our two-rail x402 gate exposed that the spec could not describe a native gas-token rail; the authors fixed it in 0.3.1 ([thread](https://github.com/AnswerDotAI/llms-txt/issues/126))
 - **Co-authored** the [read conventions for attestation registries](https://github.com/ShadowOfTime1/monad-attestation-read-conventions) note (MRC-13/MRC-14 consumer side), operational half from the live observed feed
 - Independently identified the `debug_checkpoint` keystore-password leak in Monad's canonical diagnostic tooling (publicly credited as a second finder)
 
